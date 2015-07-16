@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>mActionToggleEditing.png</file>
+  </qresource>
+</RCC>

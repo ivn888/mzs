@@ -1,0 +1,62 @@
+﻿Versione 1.1.0 [9 aprile 2014]
+	Indagini
+		Corretti problemi di inserimento indagini puntuali (modificati trigger)
+		Corretti problemi di aggiornamento sulle label dei parametri (modificato codice python)
+		Corretti problemi con verifica validità quote top e bottom in indagini puntuali e parametri puntuali
+		Modificati form parametri puntuali
+		Aggiunta indagine puntuale "Perforazione con piezometro"
+		Aggiunti parametro soggiacenza per tutte le perforazioni
+		Corretto colore Area di Emergenza-Ammassamento
+		Modificate legende faglie in MOPS e CGT
+
+Versione 1.0.1 [4 aprile 2014]
+
+	Progetto CLE
+		Modificate le legende di Aggregato strutturale inteferente e Unita strutturale
+
+versione 1.2 [20 maggio 2014]
+	Indagini
+		Bugfix
+		aggiunto il pulsante aprifile al campo tabella valori
+ 		aggiunti 2 layer per gestire la simbologia delle indagini multiple sullo stesso sito
+		aggiunta la possibilità di nascondere le indagini (al momento nascoste le geotecniche di laboratorio e idrogeologiche)
+		aggiunte indagini e parametri mancanti (standard ver. 3.0)
+	CGT
+		corretta voce doppia valle sepolta stretta
+		corretta legenda Elementi geologici e idrogeologici
+	CLE
+		Bugfix
+		corretto sistema di riferimento da 32633 a 32632
+
+
+versione 1.2.1 [16 giugno 2014]
+	Indagini
+		rese visibili pozzi per acqua nel layer indagini_puntuali layout
+	CLE
+		etichettatura dei layer secondo gli standard		
+		riviste vestizioni in generale
+		aggiunta visualizzazione delle geometrie non associate al db		
+		rivisto layout A0 e A1		
+		creato layout A2
+	Geotec
+		Eliminata visualizzazione "Traccia della sezione topografica"
+
+versione 1.2.2 [16 giugno 2014]
+	Tutte
+		Aggiunte tematizzazioni per valori nulli
+		Correzioni ai layout
+	CGT 		
+		Rese visibili le sezioni geologiche 
+	MOPS
+		Rese visibili le tracce di sezioni topografiche
+
+
+versione 1.3	[05 agosto 2014]
+	MOPS
+		Aggiunta label frequenze per HVSR
+	Tutte	
+		Aggiunto shapefile area indagine
+	Indagini
+		Modificata etichettatura per indagini lineari
+		Aggiunto nel layout simboli di PPD Medie e Pesanti (DA FARE !)
+
