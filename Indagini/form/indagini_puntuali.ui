@@ -6,13 +6,31 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>564</width>
-    <height>348</height>
+    <width>632</width>
+    <height>452</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>563</width>
+    <width>400</width>
+    <height>200</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>2048</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>2048</width>
     <height>0</height>
    </size>
   </property>
@@ -24,73 +42,12 @@
   <property name="windowTitle">
    <string>Indagini Puntuali</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>280</y>
-     <width>161</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>290</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>resources/arpa.gif</pixmap>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_16">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>290</y>
-     <width>131</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>resources/rp.gif</pixmap>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_17">
-   <property name="geometry">
-    <rect>
-     <x>348</x>
-     <y>320</y>
-     <width>181</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>contatti: sigeo@arpa.piemonte.it</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>11</x>
-     <y>11</y>
-     <width>531</width>
+     <x>0</x>
+     <y>0</y>
+     <width>441</width>
      <height>22</height>
     </rect>
    </property>
@@ -128,38 +85,107 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>50</y>
-     <width>541</width>
-     <height>231</height>
+     <y>20</y>
+     <width>601</width>
+     <height>361</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="tab">
+   <property name="qgisRelation" stdset="0">
+    <string>sito_ind_pun</string>
+   </property>
+   <widget class="QWidget" name="tab_1">
     <attribute name="title">
      <string>Identificativo</string>
     </attribute>
-    <widget class="QLineEdit" name="tipo_ind">
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>129</y>
-       <width>49</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
+       <y>50</y>
+       <width>411</width>
+       <height>104</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Classe</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="tipo_indcmb">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Tipo</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="classe_ind"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="pkey_spu"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLineEdit" name="tipo_ind"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Sito</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
        <y>10</y>
-       <width>451</width>
-       <height>27</height>
+       <width>411</width>
+       <height>26</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
       <item>
        <widget class="QLabel" name="label_3">
         <property name="toolTip">
@@ -240,61 +266,6 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>451</width>
-       <height>104</height>
-      </rect>
-     </property>
-     <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Sito</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="pkey_spu"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Classe</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="classe_ind"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Tipo</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="tipo_indcmb">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>300</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -303,58 +274,49 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>170</x>
+       <x>7</x>
        <y>10</y>
-       <width>351</width>
-       <height>181</height>
+       <width>411</width>
+       <height>201</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="1">
        <widget class="QLineEdit" name="id_indpuex"/>
       </item>
-      <item>
-       <widget class="QLineEdit" name="arch_ex"/>
-      </item>
-      <item>
+      <item row="2" column="1">
        <widget class="QPlainTextEdit" name="note_ind"/>
       </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>154</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="arch_ex"/>
+      </item>
+      <item row="0" column="0">
        <widget class="QLabel" name="lbl_valore1_2">
         <property name="enabled">
          <bool>true</bool>
         </property>
         <property name="text">
-         <string>Precedente Identificativo</string>
+         <string>Prec. Identif.</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="0">
        <widget class="QLabel" name="lbl_valore1">
         <property name="enabled">
          <bool>true</bool>
         </property>
         <property name="text">
-         <string>Nome precedente archivio</string>
+         <string>Preced. Archivio</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="0">
        <widget class="QLabel" name="lbl_valore2">
         <property name="text">
          <string>Note</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
        </widget>
       </item>
@@ -363,46 +325,139 @@
    </widget>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
+     <string>Varie</string>
+    </attribute>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>1</x>
+       <y>4</y>
+       <width>421</width>
+       <height>150</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="doc_ind">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="doc_pag"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labe">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>Data esecuzione</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="data_ind_2">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>Pagina contenente l'indagine</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="data_ind_3">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>Nome file contenente l'indagine</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QDateEdit" name="data_ind">
+        <property name="date">
+         <date>
+          <year>2015</year>
+          <month>1</month>
+          <day>1</day>
+         </date>
+        </property>
+        <property name="displayFormat">
+         <string>dd/MM/yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnFile">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnApriFile">
+          <property name="text">
+           <string>Apri File</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="title">
      <string>Quota/spessore</string>
     </attribute>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>220</x>
+       <x>5</x>
        <y>10</y>
-       <width>111</width>
-       <height>181</height>
+       <width>411</width>
+       <height>151</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
-      <item>
-       <widget class="QLineEdit" name="prof_top"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="prof_bot"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="spessore"/>
-      </item>
-      <item>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="3" column="1">
        <widget class="QLineEdit" name="quota_slm_top"/>
       </item>
-      <item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="spessore"/>
+      </item>
+      <item row="4" column="1">
        <widget class="QLineEdit" name="quota_slm_bot"/>
       </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>198</width>
-       <height>181</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_6">
-      <item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="prof_top"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="prof_bot"/>
+      </item>
+      <item row="0" column="0">
        <widget class="QLabel" name="lbl_valore1_3">
         <property name="enabled">
          <bool>true</bool>
@@ -412,7 +467,21 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>[m]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>[m]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <widget class="QLabel" name="lbl_valore1_4">
         <property name="enabled">
          <bool>true</bool>
@@ -422,7 +491,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="0">
        <widget class="QLabel" name="lbl_valore1_5">
         <property name="enabled">
          <bool>true</bool>
@@ -432,7 +501,28 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="4" column="2">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>[m slm]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>[m slm]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>[m]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
        <widget class="QLabel" name="lbl_valore1_6">
         <property name="enabled">
          <bool>true</bool>
@@ -442,7 +532,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="4" column="0">
        <widget class="QLabel" name="lbl_valore1_7">
         <property name="enabled">
          <bool>true</bool>
@@ -454,203 +544,137 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>10</y>
-       <width>44</width>
-       <height>181</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_7">
-      <item>
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>[m]</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>[m]</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_11">
-        <property name="text">
-         <string>[m]</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_12">
-        <property name="text">
-         <string>[m slm]</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>[m slm]</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_4">
-    <attribute name="title">
-     <string>Varie</string>
-    </attribute>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>20</y>
-       <width>321</width>
-       <height>120</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_8">
-      <item>
-       <widget class="QLineEdit" name="data_ind"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="doc_pag"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="doc_ind">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>183</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_9">
-      <item>
-       <widget class="QLabel" name="labe">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string>Data esecuzione</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="data_ind_2">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string>Pagina contenente l'indagine</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="data_ind_3">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string>Nome file contenente l'indagine</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QPushButton" name="btnFile">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>150</y>
-       <width>31</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="btnApriFile">
-     <property name="geometry">
-      <rect>
-       <x>240</x>
-       <y>150</y>
-       <width>51</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Aprifile</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="tab_5">
     <attribute name="title">
      <string>Parametri collegati</string>
     </attribute>
-    <widget class="QTableWidget" name="tableParametri">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
+    <widget class="QgsRelationEditorWidget" name="rel_ind_par_pt">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>521</width>
-       <height>131</height>
+       <x>0</x>
+       <y>-10</y>
+       <width>581</width>
+       <height>341</height>
       </rect>
      </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::EditKeyPressed</set>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
      </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
+     <property name="styleSheet">
+      <string notr="true">QgsCollapsibleGroupBoxBasic::title, QgsCollapsibleGroupBox::title {  subcontrol-origin: margin;  subcontrol-position: top left;  margin-left: 20px;  margin-right: 5px;  left: 0px;  top: 2px;}</string>
      </property>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>30</number>
-     </attribute>
-    </widget>
-    <widget class="QPushButton" name="btnApriForm">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>150</y>
-       <width>101</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Apri  Parametro</string>
+     <property name="qgisRelation">
+      <string notr="true">rel_ind_par_pt</string>
      </property>
     </widget>
    </widget>
   </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>390</y>
+     <width>491</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <item>
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>resources/arpa.gif</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_16">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>resources/rp.gif</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QDialogButtonBox" name="buttonBox">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="standardButtons">
+         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>contatti: sigeo@arpa.piemonte.it</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
   <zorder>layoutWidget</zorder>
-  <zorder>buttonBox</zorder>
-  <zorder>label_10</zorder>
-  <zorder>label_16</zorder>
-  <zorder>label_17</zorder>
+  <zorder>layoutWidget</zorder>
   <zorder>Identificativo</zorder>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsCollapsibleGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>qgscollapsiblegroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QgsRelationEditorWidget</class>
+   <extends>QgsCollapsibleGroupBox</extends>
+   <header>qgsrelationeditorwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>Identificativo</tabstop>
+  <tabstop>pkey_spu</tabstop>
+  <tabstop>classe_ind</tabstop>
+  <tabstop>tipo_indcmb</tabstop>
+  <tabstop>id_indpuex</tabstop>
+  <tabstop>arch_ex</tabstop>
+  <tabstop>note_ind</tabstop>
+  <tabstop>data_ind</tabstop>
+  <tabstop>doc_pag</tabstop>
+  <tabstop>doc_ind</tabstop>
+  <tabstop>btnFile</tabstop>
+  <tabstop>btnApriFile</tabstop>
+  <tabstop>prof_top</tabstop>
+  <tabstop>prof_bot</tabstop>
+  <tabstop>spessore</tabstop>
+  <tabstop>quota_slm_top</tabstop>
+  <tabstop>quota_slm_bot</tabstop>
+  <tabstop>rel_ind_par_pt</tabstop>
+  <tabstop>pkey_indpu</tabstop>
+  <tabstop>ID_INDPU</tabstop>
+  <tabstop>tipo_ind</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

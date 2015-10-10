@@ -1,32 +1,48 @@
+# -*- coding: utf-8 -*-
+#-------------------------------------------------------------------------------
+# Name:        parametripun.py
+# Purpose:
+#
+# Author:      Luca Lanteri Arpa Piemonte
+#
+# Created:     05-10-2015
+# Copyright:   (c) Luca Lanteri 2015
+# Licence:     <GPL>
+#---------------------
+#!/usr/bin/env python
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from qgis.utils import iface
-# from qgis.core import QgsMapLayerRegistry
 from qgis.core import *
+import sys, os, mzs, mzs_par
 
 DEBUGMODE = True
 
-myDialog = None
-myfeatureid = None
-curLayer = None
+sys.path.append(QgsProject.instance().homePath())
 
 def formOpen(dialog,layerid,featureid):
     #definisco le variabili globali
-    global myDialog, myfeatureid, curLayer
+    #global myDialog, myfeatureid, curLayer
+    
     #oggetti del form
-    global ComboBoxTipo,ComboBoxInd, ComboBoxTipoPar, LineEditTipoInd 
-    global LabelValore,LabelUmisura, LineEditTipoPar
-    global LedSpessore, LedTop, LedBottom, LedQtop, LedQbottom
-    global LedTabCurve
+    #global ComboBoxTipo,ComboBoxInd, ComboBoxTipoPar, LineEditTipoInd 
+    #global LabelValore,LabelUmisura, LineEditTipoPar
+    #global LedSpessore, LedTop, LedBottom, LedQtop, LedQbottom
+    #global LedTabCurve, rsTipoindagine, LayerParametri
 
     #variabili
-    global rsTabParametri #tab_decodifica_parametri
-    global rsTipoindagine #vettore contente i tipi indagine presenti nela layer [1:int,'ERT':text]
-    global dicTipo # dizionario del tipo indagine {int,string}
+    #global rsTabParametri #tab_decodifica_parametri
+    #global rsTipoindagine #vettore contente i tipi indagine presenti nel layer [1:int,'ERT':text]
+    #global dicTipo # dizionario del tipo indagine {int,string}
+    #global rsTabParametri
     
     curLayer=layerid
     myDialog =dialog
     myfeatureid=featureid
+    
+    rsTipoindagine=[] #vettore che contiene l'elenco dei tipi indagine
+    rsTabParametri=[] #vettore che contiene l'elenco dei tipi parametri
     
     # assegno gli oggetti della combo
     ComboBoxTipoPar = myDialog.findChild(QComboBox,"tipo_parpucmb")
@@ -40,163 +56,24 @@ def formOpen(dialog,layerid,featureid):
     LedBottom= myDialog.findChild(QLineEdit,"prof_bot")
     LedQtop= myDialog.findChild(QLineEdit,"quota_slm_top")
     LedQbottom= myDialog.findChild(QLineEdit,"quota_slm_bot")
-    BtnFileTabella = myDialog.findChild(QPushButton,"btnFileTabella")
     LedTabCurve = myDialog.findChild(QLineEdit,"tab_curve")
-    
-    LedTop.editingFinished.connect(updSpessore)
-    LedBottom.editingFinished.connect(updSpessore)
-    LedQtop.editingFinished.connect(ctrlquota)
-    LedQbottom.editingFinished.connect(ctrlquota)
-    ComboBoxInd.activated.connect(updateComboInd)
-    ComboBoxTipoPar.activated.connect(updateComboTipoPar)
-    BtnFileTabella.clicked.connect(selectFile)
- 
-    if curLayer.isEditable():
-        ComboBoxTipoPar.setEnabled(True)
-    else:
-       ComboBoxTipoPar.setEnabled(False)
-    
-    readTabParametri() # legge la tabella 'tab_parametri_pun'
-    readIndagine() # legge i dati dal layer 'indagini_puntuali'
-    updateComboInd() #popola la combo Parametri e aggiorna le relative etichette
-    readComboTipoPar() # all'apertura e alla modifica del Form aggiorna la combo Tipo Parametro
-    #updateComboTipoPar #popola le etichette tipoParametro
-    	
-def readTabParametri():
-# legge i dati dalla tabella di decodifica 'tab_parametri_pun' in rsTabParametri
-    global rsTabParametri   
-    
-    aLayer = QgsMapLayerRegistry.instance().mapLayersByName('tab_parametri_pun')[0]
-    
-    # recupero gli attributi delle features
-    lista=[]
-    rsTabParametri=[] # vettore contenente la tabella 'tab_parametri_pun'
-    
-    for i in aLayer.getFeatures(QgsFeatureRequest().setFlags(QgsFeatureRequest.NoGeometry)):
-        alist=[i.attributes()[3],i.attributes()[4],i.attributes()[5],i.attributes()[6],i.attributes()[7]]
-        rsTabParametri.append(alist)
+    LayerParametri = QgsMapLayerRegistry.instance().mapLayersByName('parametri_puntuali')[0]
 
-def readIndagine():
-# legge i dati dal layer 'indagini_puntuali' e li carica in rsTipoindagine
-    global rsTipoindagine
+    #connetto i segnali	
+    LedTop.editingFinished.connect(lambda: mzs.updSpessore(LedTop,LedBottom,LedSpessore))
+    LedBottom.editingFinished.connect(lambda: mzs.updSpessore(LedTop,LedBottom,LedSpessore))
+    LedQtop.textChanged.connect(lambda: mzs.validaQuota(LedQtop))
+    LedQbottom.textChanged.connect(lambda: mzs.validaQuota(LedQbottom))
+    LedQtop.editingFinished.connect(lambda: mzs.ctrlquota(LedQtop,LedQbottom))
+    LedQbottom.editingFinished.connect(lambda: mzs.ctrlquota(LedQtop,LedQbottom))
+    ComboBoxInd.activated.connect(lambda: mzs_par.populateComboPar(ComboBoxInd,ComboBoxTipoPar,LabelValore,LabelUmisura,LineEditTipoInd,rsTipoindagine,rsTabParametri))
+    ComboBoxTipoPar.activated.connect(lambda: mzs_par.updateLineEditParametro(ComboBoxTipoPar,LabelValore,LineEditTipoPar,LabelUmisura,rsTabParametri))
     
-    aLayer = QgsMapLayerRegistry.instance().mapLayersByName('indagini_puntuali')[0]
-    #recupero gli attributi delle features
-    rsTipoindagine=[]
-    
-    for i in aLayer.getFeatures():
-        alist=[i.attributes()[1],i.attributes()[3],i.attributes()[4]]
-        rsTipoindagine.append(alist)
-
-def updateComboInd():
-# quando viene aggiornata la combo Indagine popola la combo Tipo Parametri 
-# e mette le etichette a null
-
-    #carico il valore id id_indpu selezionato nella combo
-    id_indpu_cur = ComboBoxInd.currentText()
-    tipo_ind=''
-        
-    # cerco il tipo indagine corrispondente a id_indpu
-    for row in rsTipoindagine:
-        if row[2]==id_indpu_cur:
-            tipo_ind=row[1]          
-            break
-            
-    # aggiorno i valori nella combobox Tipo
-    ComboBoxTipoPar.clear()
-    ComboBoxTipoPar.addItem("No Data")
-    
-    #popola ComboBoxTipoPar con tutti i valori validi per il tipo di indagine
-    for row in rsTabParametri:
-        if row[0]==tipo_ind:  # se il tipo indagine e uguale a quello contenuto in  rsTabParametri 
-            ComboBoxTipoPar.addItem(row[1]) # aggiungi la voce a ComboBoxTipoPar
-            LineEditTipoInd.setText(row[0]) 
-    
-    #azzera le etichette
-    LabelValore.setText('---')
-    LabelUmisura.setText('---')
-          
-def updateComboTipoPar():
-# quando viene aggiornata la combo Tipo Parametri popola le etichette tipoParametro
-    
-    dicTipo={} 
-    valtxt = ComboBoxTipoPar.currentText()
-    
-    x=1
-    for row in rsTabParametri:
-        if row[1]==valtxt:
-            LineEditTipoPar.setText(row[3])
-            dicTipo[row[3]]=x
-            x=x+1
-            if row[2]:
-                LabelValore.setText(row[1])
-            else:
-                LabelValore.setText('---')
-            if row[3]:
-                LabelUmisura.setText('['+row[4]+']')
-            else:
-                LabelUmisura.setText('---')
- 
-def readComboTipoPar():
-# all'apertura e alla modifica del Form aggiorna la combo Tipo Parametro e le etichette
-    try:
-        valtxt = LineEditTipoPar.displayText() # tipo_parametro
-        for row in rsTabParametri:
-            if row[3]==valtxt:
-                val=row[1]
-               
-        index=ComboBoxTipoPar.findText(val)
-        #print valtxt
-        #print index        
-        
-        if valtxt =='NULL' or valtxt =='':
-            ComboBoxTipoPar.setCurrentIndex(0)
-        else:
-            ComboBoxTipoPar.setCurrentIndex(index)
-    
-        for row in rsTabParametri:
-            if row[3]==valtxt:
-                par=row[1]
-                Umis=row[4]
-         
-        LabelValore.setText(par)
-        LabelUmisura.setText('['+Umis+']')
-    
-    except:
-        print "Unexpected error - readComboTipoPar"
-
-#verifica che la profondita top sia maggiore della profondita bottom e calcola il campo spessore come differenza di quote		
-def updSpessore():
-    try:
-        if (float(str(LedTop.displayText())) > (float(str(LedBottom.displayText())))):
-            LedTop.setStyleSheet("background-color: rgba(255, 107, 107, 150);")
-            LedBottom.setStyleSheet("background-color: rgba(255, 107, 107, 150);")
-            #QMessageBox.about(myDialog, "Info", "La profondita' top deve essere minore della profondita' bottom")
-            return none
-        if (LedTop.displayText() != NULL) and (LedBottom.displayText() != NULL):
-            LedSpessore.setText(str(float(str(LedBottom.displayText()))-float(str(LedTop.displayText() ))))
-            LedTop.setStyleSheet("")
-            LedBottom.setStyleSheet("")
-    except:
-        print "Unexpected error - updSpessore: dato nullo"
-
-#verifica che la quota top sia maggiore della quota bottom 
-def ctrlquota():
-    try:
-        if (float(str(LedQtop.displayText())) < (float(str(LedQbottom.displayText())))):
-                LedQtop.setStyleSheet("background-color: rgba(255, 107, 107, 150);")
-                LedQbottom.setStyleSheet("background-color: rgba(255, 107, 107, 150);")
-                #msgBox = QMessageBox()
-                #QMessageBox.about(myDialog, "Info", "La quota top deve essere maggiore della quota bottom")
-        else:
-                LedQtop.setStyleSheet("")
-                LedQbottom.setStyleSheet("")
-    except:
-        print "Unexpected error -ctrlquota: dato nullo"
-        
-def selectFile():
-    filename = QFileDialog.getOpenFileName()
-    if filename:
-        LedTabCurve.setText(filename)
-
-
+    #LayerParametri.editingStarted.connect(lambda: mzs.chkEditState(LayerParametri, [ComboBoxTipoPar]))
+    #LayerParametri.editingStopped.connect(lambda: mzs.chkEditState(LayerParametri, [ComboBoxTipoPar]))
+  
+    mzs.chkEditState(LayerParametri, [ComboBoxTipoPar])
+    rsTipoindagine= mzs_par.readIndagini('indagini_puntuali') # legge i dati dal layer 'indagini_puntuali'
+    rsTabParametri= mzs_par.readTabParametri('tab_parametri_pun') # legge la tabella 'tab_parametri_pun' 
+    mzs_par.populateComboPar(ComboBoxInd,ComboBoxTipoPar,LabelValore,LabelUmisura,LineEditTipoInd,rsTipoindagine,rsTabParametri) #popola la combo Parametri e aggiorna le relative etichette
+    mzs_par.updateComboTipoPar(LineEditTipoPar,LineEditTipoInd,ComboBoxTipoPar,rsTabParametri,LabelValore,LabelUmisura) # all'apertura e alla modifica del Form aggiorna la combo Tipo Parametro 

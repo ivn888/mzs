@@ -18,7 +18,7 @@
     <rect>
      <x>11</x>
      <y>11</y>
-     <width>471</width>
+     <width>391</width>
      <height>22</height>
     </rect>
    </property>
@@ -55,39 +55,14 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>50</y>
-     <width>361</width>
-     <height>61</height>
+     <x>11</x>
+     <y>51</y>
+     <width>391</width>
+     <height>71</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLineEdit" name="id_ep">
-      <property name="toolTip">
-       <string extracomment="pippo"/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="tipo_ep"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>101</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QLabel" name="label_3">
       <property name="toolTip">
        <string/>
@@ -103,26 +78,39 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="id_ep">
+      <property name="toolTip">
+       <string extracomment="pippo"/>
+      </property>
+      <property name="whatsThis">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
        <string>Tipo elemento</string>
       </property>
      </widget>
     </item>
+    <item row="1" column="1">
+     <widget class="QComboBox" name="tipo_ep"/>
+    </item>
    </layout>
   </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>200</y>
-     <width>221</width>
-     <height>41</height>
+     <x>11</x>
+     <y>201</y>
+     <width>385</width>
+     <height>44</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0" rowspan="2">
      <widget class="QLabel" name="label_10">
       <property name="font">
        <font>
@@ -138,7 +126,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1" rowspan="2">
      <widget class="QLabel" name="label_16">
       <property name="text">
        <string/>
@@ -148,19 +136,7 @@
       </property>
      </widget>
     </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>200</y>
-     <width>241</width>
-     <height>46</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
+    <item row="0" column="2">
      <widget class="QDialogButtonBox" name="buttonBox">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -170,7 +146,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item row="1" column="2">
      <widget class="QLabel" name="label_17">
       <property name="text">
        <string>contatti: sigeo@arpa.piemonte.it</string>
@@ -182,17 +158,11 @@
     </item>
    </layout>
   </widget>
-  <zorder>id_ep</zorder>
-  <zorder>label_3</zorder>
   <zorder>layoutWidget</zorder>
-  <zorder>buttonBox</zorder>
-  <zorder>label_10</zorder>
-  <zorder>label_16</zorder>
-  <zorder>label_17</zorder>
-  <zorder>tipo_ep</zorder>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>shape_leng</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
  </widget>
  <resources/>
  <connections>
